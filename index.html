@@ -925,6 +925,138 @@
             color: var(--text-muted);
         }
 
+        /* ===== HOOK INTRO SCROLL SECTIONS ===== */
+        .hook-scene {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hook-scene .hook-text {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(60px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hook-scene .hook-text.hook-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .hook-scene .hook-text.hook-exit {
+            opacity: 0;
+            transform: translateY(-60px) scale(0.95);
+        }
+
+        .hook-big {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hook-sub {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .hook-accent {
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hook-glow {
+            text-shadow: 0 0 40px rgba(233, 69, 96, 0.4);
+        }
+
+        .hook-line {
+            width: 0;
+            height: 3px;
+            background: var(--gradient-2);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+            transition: width 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+        }
+
+        .hook-visible .hook-line {
+            width: 120px;
+        }
+
+        .hook-counter {
+            display: inline-block;
+            font-size: 5rem;
+            font-weight: 900;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        .hook-particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: hookParticle 4s infinite ease-in-out;
+        }
+
+        @keyframes hookParticle {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-40px) rotate(180deg); opacity: 0.8; }
+        }
+
+        .hook-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gradient-2);
+            z-index: 9999;
+            transition: width 0.1s linear;
+        }
+
+        .hook-skip {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(233, 69, 96, 0.2);
+            border: 1px solid var(--accent);
+            border-radius: 30px;
+            color: var(--accent-light);
+            font-size: 0.8rem;
+            cursor: pointer;
+            z-index: 9999;
+            transition: all 0.3s;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .hook-skip:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .hook-skip.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .hook-big { font-size: 2rem; }
+            .hook-counter { font-size: 3rem; }
+            .hook-sub { font-size: 1rem; }
+        }
+
         /* Profile Photo */
         .profile-photo-wrapper {
             text-align: center;
@@ -1221,6 +1353,82 @@
     <div class="circle"></div>
     <div class="circle"></div>
 </div>
+
+<!-- HOOK PROGRESS BAR -->
+<div class="hook-progress" id="hookProgress"></div>
+<a href="#top" class="hook-skip" id="hookSkip">본문으로 건너뛰기 →</a>
+
+<!-- HOOK SCENE 1 -->
+<section class="hook-scene" id="hook1" style="background: radial-gradient(ellipse at center, rgba(233,69,96,0.06) 0%, var(--bg) 70%);">
+    <div class="hook-text" data-hook="1">
+        <div class="hook-big">
+            대한민국에서<br>
+            <span class="hook-accent">형사 사건</span>이 발생하면
+        </div>
+        <div class="hook-line"></div>
+        <div class="hook-sub">
+            피해자도, 피의자도<br>
+            가장 먼저 하는 행동이 있습니다.
+        </div>
+    </div>
+    <div class="hook-particle" style="width: 6px; height: 6px; background: var(--accent); top: 20%; left: 15%; animation-delay: 0s;"></div>
+    <div class="hook-particle" style="width: 4px; height: 4px; background: var(--gold); top: 60%; right: 20%; animation-delay: -1s;"></div>
+    <div class="hook-particle" style="width: 8px; height: 8px; background: rgba(100,181,246,0.5); bottom: 30%; left: 25%; animation-delay: -2s;"></div>
+</section>
+
+<!-- HOOK SCENE 2 -->
+<section class="hook-scene" id="hook2" style="background: radial-gradient(ellipse at 30% 50%, rgba(245,197,24,0.06) 0%, var(--bg) 70%);">
+    <div class="hook-text" data-hook="2">
+        <div class="hook-big">
+            <span style="color: var(--text-muted); font-weight: 400; font-size: 1.5rem;">바로</span><br>
+            "<span class="hook-accent">변호사</span>"를 검색합니다
+        </div>
+        <div class="hook-line"></div>
+        <div class="hook-sub">
+            네이버, 인스타그램, 유튜브...<br>
+            그 순간, 누가 먼저 눈에 들어오는지가<br>
+            모든 것을 결정합니다.
+        </div>
+    </div>
+    <div class="hook-particle" style="width: 5px; height: 5px; background: var(--gold); top: 25%; right: 15%; animation-delay: -0.5s;"></div>
+    <div class="hook-particle" style="width: 7px; height: 7px; background: var(--accent); bottom: 25%; left: 20%; animation-delay: -1.5s;"></div>
+</section>
+
+<!-- HOOK SCENE 3 -->
+<section class="hook-scene" id="hook3" style="background: radial-gradient(ellipse at 70% 50%, rgba(233,69,96,0.08) 0%, var(--bg) 70%);">
+    <div class="hook-text" data-hook="3">
+        <div style="margin-bottom: 1rem;">
+            <span class="hook-counter" id="followerCount">0</span>
+        </div>
+        <div class="hook-big" style="font-size: 2rem;">
+            명의 팔로워가<br>
+            이미 선택한 변호사
+        </div>
+        <div class="hook-line"></div>
+        <div class="hook-sub">
+            광고비 0원. 순수 실력과 콘텐츠만으로.<br>
+            하지만 이건 <strong style="color: var(--accent-light);">시작</strong>에 불과합니다.
+        </div>
+    </div>
+</section>
+
+<!-- HOOK SCENE 4 -->
+<section class="hook-scene" id="hook4" style="background: radial-gradient(ellipse at center, rgba(245,197,24,0.06) 0%, var(--bg) 70%);">
+    <div class="hook-text" data-hook="4">
+        <div class="hook-big">
+            지금 필요한 건<br>
+            <span class="hook-accent">전략</span>입니다
+        </div>
+        <div class="hook-line"></div>
+        <div class="hook-sub">
+            검증된 브랜드 "꽃변"을<br>
+            어떻게 <strong style="color: white;">폭발적으로 성장</strong>시킬 것인가.
+        </div>
+    </div>
+    <div class="hook-particle" style="width: 10px; height: 10px; background: rgba(233,69,96,0.4); top: 15%; left: 10%; animation-delay: -0.7s;"></div>
+    <div class="hook-particle" style="width: 6px; height: 6px; background: rgba(245,197,24,0.4); top: 70%; right: 12%; animation-delay: -2.3s;"></div>
+    <div class="hook-particle" style="width: 4px; height: 4px; background: rgba(100,181,246,0.4); bottom: 15%; left: 40%; animation-delay: -1.2s;"></div>
+</section>
 
 <!-- HERO -->
 <section class="hero" id="top">
@@ -1552,7 +1760,7 @@
                 </div>
 
                 <div class="problem-annotation" style="margin-top: 1rem;">
-                    <strong>진단:</strong> 게시물 66개, 팔로워 1만 명으로 기본 볼륨은 갖추었지만, <strong>그리드의 비주얼 통일감이 부족</strong>하고 콘텐츠가 이미지/텍스트 위주 단일 포맷에 머물러 있음. 인스타그램 탐색 탭 노출과 성장의 핵심인 <strong>릴스(Reels) 콘텐츠가 거의 전무</strong>하여, 1만 팔로워 대비 도달률이 낮고 신규 유입이 제한적. 브랜드 컬러/폰트 등 비주얼 아이덴티티 통일이 필요.
+                    <strong>진단:</strong> 게시물 66개, 팔로워 1만 명으로 기본 볼륨은 갖추었지만, <strong>그리드의 비주얼 통일감이 부족</strong>함. 릴스 콘텐츠가 존재하나(자기소개, 트렌드 활용 등) 전체 게시물 대비 비중이 낮고, 이미지/텍스트 위주 포맷이 다수. 브랜드 컬러/폰트 등 비주얼 아이덴티티를 통일하고, <strong>릴스 비중을 체계적으로 확대</strong>하면 도달률과 신규 유입이 크게 개선될 수 있음.
                 </div>
 
                 <div class="fix-suggestion">
@@ -2861,12 +3069,82 @@
     <div class="container">
         <p style="margin-bottom: 0.5rem;">김영지 변호사 마케팅 전략 기획서 · 2026년 3월 28일</p>
         <p style="color: var(--text-muted); font-size: 0.8rem;">본 기획서는 @your_lawyer_yj 소셜미디어 분석 및 공개 정보 기반으로 작성되었습니다.</p>
-        <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.5rem;">Confidential · For Internal Use Only</p>
+        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <p style="font-size: 0.9rem; font-weight: 600; color: var(--text);">Produced by</p>
+            <p style="font-size: 1.1rem; font-weight: 700; margin-top: 0.3rem; background: var(--gradient-2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">주식회사 익스피어리언스</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">대표 권오성</p>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 1rem;">Confidential · For Internal Use Only</p>
     </div>
 </footer>
 
 <script>
-    // Scroll animation
+    // ===== HOOK INTRO SCROLL EFFECT =====
+    const hookTexts = document.querySelectorAll('.hook-text');
+    const hookProgress = document.getElementById('hookProgress');
+    const hookSkip = document.getElementById('hookSkip');
+    const heroSection = document.getElementById('top');
+    let counterAnimated = false;
+
+    function animateCounter(el, target) {
+        if (counterAnimated) return;
+        counterAnimated = true;
+        let current = 0;
+        const step = Math.ceil(target / 60);
+        const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            el.textContent = current.toLocaleString();
+        }, 25);
+    }
+
+    const hookObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('hook-visible');
+                entry.target.classList.remove('hook-exit');
+                // Counter animation for scene 3
+                if (entry.target.dataset.hook === '3') {
+                    animateCounter(document.getElementById('followerCount'), 20000);
+                }
+            } else {
+                const rect = entry.boundingClientRect;
+                if (rect.top < 0) {
+                    entry.target.classList.add('hook-exit');
+                    entry.target.classList.remove('hook-visible');
+                } else {
+                    entry.target.classList.remove('hook-visible');
+                    entry.target.classList.remove('hook-exit');
+                }
+            }
+        });
+    }, { threshold: 0.4 });
+
+    hookTexts.forEach(el => hookObserver.observe(el));
+
+    // Hook progress bar & skip button
+    const hookScenes = document.querySelectorAll('.hook-scene');
+    const totalHookHeight = hookScenes.length * window.innerHeight;
+
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const progress = Math.min((scrollY / totalHookHeight) * 100, 100);
+        hookProgress.style.width = progress + '%';
+
+        // Hide skip button and progress after hooks
+        if (scrollY > totalHookHeight) {
+            hookSkip.classList.add('hidden');
+            hookProgress.style.opacity = '0';
+        } else {
+            hookSkip.classList.remove('hidden');
+            hookProgress.style.opacity = '1';
+        }
+    });
+
+    // ===== MAIN CONTENT SCROLL ANIMATION =====
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
