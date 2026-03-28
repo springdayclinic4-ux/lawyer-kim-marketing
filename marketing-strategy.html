@@ -1,0 +1,2873 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김영지 변호사 마케팅 전략 기획서</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap');
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b81;
+            --gold: #f5c518;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --text: #e8e8e8;
+            --text-muted: #8892b0;
+            --border: rgba(233, 69, 96, 0.2);
+            --gradient-1: linear-gradient(135deg, #e94560, #0f3460);
+            --gradient-2: linear-gradient(135deg, #f5c518, #e94560);
+            --gradient-3: linear-gradient(135deg, #0f3460, #e94560);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(233, 69, 96, 0.08), transparent);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .bg-animation .circle:nth-child(1) { width: 600px; height: 600px; top: -100px; left: -100px; animation-delay: 0s; }
+        .bg-animation .circle:nth-child(2) { width: 400px; height: 400px; top: 50%; right: -100px; animation-delay: -5s; }
+        .bg-animation .circle:nth-child(3) { width: 300px; height: 300px; bottom: -50px; left: 30%; animation-delay: -10s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.05); }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(233, 69, 96, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(233, 69, 96, 0.15);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero .date {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Navigation */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav-inner::-webkit-scrollbar { display: none; }
+
+        .nav-link {
+            padding: 1rem 1.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-light);
+            border-bottom-color: var(--accent);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-number {
+            font-size: 0.8rem;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-2);
+            margin-top: 1rem;
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(233, 69, 96, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .card-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.6rem; }
+        }
+
+        /* Stats */
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+            font-weight: 500;
+        }
+
+        .tag-accent {
+            background: rgba(233, 69, 96, 0.15);
+            color: var(--accent-light);
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .tag-gold {
+            background: rgba(245, 197, 24, 0.15);
+            color: var(--gold);
+            border: 1px solid rgba(245, 197, 24, 0.3);
+        }
+
+        .tag-blue {
+            background: rgba(15, 52, 96, 0.4);
+            color: #64b5f6;
+            border: 1px solid rgba(100, 181, 246, 0.3);
+        }
+
+        .tag-green {
+            background: rgba(76, 175, 80, 0.15);
+            color: #81c784;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        /* Table */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        tr:hover td {
+            background: rgba(233, 69, 96, 0.05);
+        }
+
+        /* SWOT Grid */
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .swot-card {
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid;
+        }
+
+        .swot-card.strength {
+            background: rgba(76, 175, 80, 0.08);
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+
+        .swot-card.weakness {
+            background: rgba(233, 69, 96, 0.08);
+            border-color: rgba(233, 69, 96, 0.3);
+        }
+
+        .swot-card.opportunity {
+            background: rgba(100, 181, 246, 0.08);
+            border-color: rgba(100, 181, 246, 0.3);
+        }
+
+        .swot-card.threat {
+            background: rgba(245, 197, 24, 0.08);
+            border-color: rgba(245, 197, 24, 0.3);
+        }
+
+        .swot-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .swot-list {
+            list-style: none;
+        }
+
+        .swot-list li {
+            padding: 0.4rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .swot-list li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-1);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -3rem;
+            top: 0.5rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg);
+            transform: translateX(-50%);
+            margin-left: 1px;
+        }
+
+        .timeline-phase {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0.3rem 0;
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Metric Row */
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: var(--accent-light);
+        }
+
+        /* Channel Card */
+        .channel-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(233, 69, 96, 0.15);
+        }
+
+        .channel-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.15), rgba(15, 52, 96, 0.3));
+            border-bottom: 1px solid var(--border);
+        }
+
+        .channel-body {
+            padding: 1.5rem;
+        }
+
+        .channel-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .channel-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        /* List Style */
+        .styled-list {
+            list-style: none;
+        }
+
+        .styled-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .styled-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* Priority Badge */
+        .priority-high {
+            background: rgba(233, 69, 96, 0.2);
+            color: var(--accent-light);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .priority-medium {
+            background: rgba(245, 197, 24, 0.2);
+            color: var(--gold);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .priority-low {
+            background: rgba(100, 181, 246, 0.2);
+            color: #64b5f6;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Funnel */
+        .funnel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .funnel-step {
+            padding: 1rem 2rem;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: transform 0.3s;
+        }
+
+        .funnel-step:hover {
+            transform: scale(1.02);
+        }
+
+        .funnel-arrow {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        /* Content Calendar */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+        }
+
+        .calendar-day-header {
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .calendar-day {
+            background: var(--card-bg);
+            padding: 0.5rem;
+            min-height: 80px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.7rem;
+        }
+
+        .calendar-day-number {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--text-muted);
+        }
+
+        .calendar-event {
+            padding: 0.15rem 0.3rem;
+            border-radius: 3px;
+            margin-bottom: 0.15rem;
+            font-size: 0.65rem;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.1), rgba(15, 52, 96, 0.2));
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box strong {
+            color: var(--accent-light);
+        }
+
+        /* Persona Card */
+        .persona-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .persona-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .persona-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .persona-detail {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Comparison Table */
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr 2fr;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            align-items: center;
+        }
+
+        .comparison-label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+        }
+
+        /* Pill */
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            background: rgba(233, 69, 96, 0.1);
+            border: 1px solid var(--border);
+        }
+
+        /* KPI Dashboard */
+        .kpi-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .kpi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .kpi-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .kpi-current {
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .kpi-target {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        .kpi-target span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Animated on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Budget */
+        .budget-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .budget-item:last-child {
+            border-bottom: none;
+        }
+
+        .budget-category {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .budget-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .budget-amount {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .total-row {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-weight: 700;
+        }
+
+        /* ROI */
+        .roi-box {
+            background: linear-gradient(135deg, rgba(245, 197, 24, 0.1), rgba(233, 69, 96, 0.1));
+            border: 1px solid rgba(245, 197, 24, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .roi-value {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .action-step {
+            display: flex;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 12px;
+            margin-bottom: 0.8rem;
+            border: 1px solid var(--border);
+        }
+
+        .action-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .action-content h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .action-content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Profile Photo */
+        .profile-photo-wrapper {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 40px rgba(233, 69, 96, 0.3);
+        }
+
+        .profile-name-tag {
+            margin-top: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .profile-role-tag {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Problem Card */
+        .problem-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(233, 69, 96, 0.4);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .problem-header {
+            background: rgba(233, 69, 96, 0.15);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 1px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .problem-severity {
+            padding: 0.2rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .severity-critical {
+            background: rgba(233, 69, 96, 0.3);
+            color: #ff6b81;
+            border: 1px solid var(--accent);
+        }
+
+        .severity-warning {
+            background: rgba(245, 197, 24, 0.3);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        .severity-info {
+            background: rgba(100, 181, 246, 0.3);
+            color: #64b5f6;
+            border: 1px solid #64b5f6;
+        }
+
+        .problem-body {
+            padding: 1.5rem;
+        }
+
+        .problem-screenshot {
+            background: #0a0a15;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .screenshot-label {
+            position: absolute;
+            top: -10px;
+            left: 16px;
+            background: var(--accent);
+            color: white;
+            padding: 0.1rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .mock-profile {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+
+        .mock-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top;
+            border: 2px solid #333;
+        }
+
+        .mock-stats {
+            display: flex;
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .mock-stat-num {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .mock-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .mock-bio {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            border-left: 2px solid var(--border);
+            margin: 0.5rem 0;
+            color: var(--text-muted);
+        }
+
+        .mock-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3px;
+            margin-top: 1rem;
+        }
+
+        .mock-post {
+            aspect-ratio: 1;
+            background: #1a1a2e;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+        }
+
+        .problem-annotation {
+            background: rgba(233, 69, 96, 0.08);
+            border-left: 3px solid var(--accent);
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.85rem;
+        }
+
+        .problem-annotation.warning {
+            border-left-color: var(--gold);
+            background: rgba(245, 197, 24, 0.08);
+        }
+
+        .problem-annotation.info {
+            border-left-color: #64b5f6;
+            background: rgba(100, 181, 246, 0.08);
+        }
+
+        .fix-suggestion {
+            background: rgba(76, 175, 80, 0.08);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .fix-title {
+            color: #81c784;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Threads Mock */
+        .mock-thread-post {
+            background: #0a0a15;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .mock-thread-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .mock-thread-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .mock-thread-username {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .mock-thread-time {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .mock-thread-body {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .mock-thread-footer {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 0.6rem;
+            font-size: 0.75rem;
+            color: #555;
+        }
+
+        .annotation-arrow {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .before-after-arrow {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .before-box, .after-box {
+            padding: 1.2rem;
+            border-radius: 12px;
+        }
+
+        .before-box {
+            background: rgba(233, 69, 96, 0.08);
+            border: 1px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .after-box {
+            background: rgba(76, 175, 80, 0.08);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .before-label, .after-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .before-label { color: var(--accent-light); }
+        .after-label { color: #81c784; }
+    </style>
+</head>
+<body>
+
+<div class="bg-animation">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+    <div class="hero-content">
+        <div class="hero-badge">Marketing Strategy 2026</div>
+        <div class="profile-photo-wrapper" style="margin-bottom: 1.5rem;">
+            <img src="https://cdn.prod.website-files.com/65d7bce5224f2915d50402f0/68f05f18ea051e29b5e8be6e_%EA%B9%80%EC%98%81%EC%A7%80%20%EB%B3%80%ED%98%B8%EC%82%AC%20%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A6%88.png" alt="김영지 변호사" class="profile-photo" style="animation: fadeInUp 0.6s ease 0.1s both;">
+        </div>
+        <h1>김영지 변호사<br>마케팅 전략 기획서</h1>
+        <p class="subtitle">법무법인 심 · 형사전문 · 꽃변 브랜드</p>
+        <p class="date">2026년 3월 28일 작성 · Confidential</p>
+    </div>
+    <div class="scroll-indicator">▼</div>
+</section>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <a href="#overview" class="nav-link">현황분석</a>
+        <a href="#social" class="nav-link">SNS 분석</a>
+        <a href="#problems" class="nav-link">문제점 진단</a>
+        <a href="#swot" class="nav-link">SWOT</a>
+        <a href="#persona" class="nav-link">타겟 페르소나</a>
+        <a href="#strategy" class="nav-link">마케팅 전략</a>
+        <a href="#channels" class="nav-link">채널 확장</a>
+        <a href="#content" class="nav-link">콘텐츠 전략</a>
+        <a href="#funnel" class="nav-link">고객 퍼널</a>
+        <a href="#timeline" class="nav-link">실행 로드맵</a>
+        <a href="#budget" class="nav-link">예산</a>
+        <a href="#kpi" class="nav-link">KPI</a>
+    </div>
+</nav>
+
+<!-- 1. OVERVIEW -->
+<section class="section" id="overview">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">01 — Overview</div>
+            <h2 class="section-title">현황 분석</h2>
+            <p class="section-subtitle">김영지 변호사의 현재 포지션과 시장 환경</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="grid-4 fade-in">
+            <div class="stat-card">
+                <div class="stat-value">9,815</div>
+                <div class="stat-label">Threads 팔로워</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">4,012</div>
+                <div class="stat-label">Instagram 팔로워</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">24h</div>
+                <div class="stat-label">긴급상담 운영</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">로톡 약속이행률</div>
+            </div>
+        </div>
+
+        <div class="card fade-in" style="margin-top: 2rem;">
+            <div class="card-header">
+                <div class="card-icon" style="background: rgba(233, 69, 96, 0.15);">
+                    <img src="https://cdn.prod.website-files.com/65d7bce5224f2915d50402f0/68f05f18ea051e29b5e8be6e_%EA%B9%80%EC%98%81%EC%A7%80%20%EB%B3%80%ED%98%B8%EC%82%AC%20%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A6%88.png" alt="김영지" style="width: 48px; height: 48px; border-radius: 12px; object-fit: cover; object-position: top;">
+                </div>
+                <div>
+                    <div class="card-title">기본 프로필</div>
+                    <div class="card-subtitle">법무법인 심 파트너 변호사</div>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div>
+                    <div class="metric-row">
+                        <span class="metric-label">성명</span>
+                        <span class="metric-value">김영지</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">소속</span>
+                        <span class="metric-value">법무법인 심 (파트너)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">학력</span>
+                        <span class="metric-value">이대 영문학 → 이대 로스쿨</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">변호사시험</span>
+                        <span class="metric-value">제10회 합격</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="metric-row">
+                        <span class="metric-label">전문분야</span>
+                        <span class="metric-value">형사 (성범죄 특화)</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">위치</span>
+                        <span class="metric-value">강남구 삼성동 테헤란로</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">외부 활동</span>
+                        <span class="metric-value">서울디자인재단 위원 외</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">언어</span>
+                        <span class="metric-value">한국어 / 영어</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box fade-in">
+            <strong>핵심 현황:</strong> 현재 마케팅은 인스타그램 + 쓰레드 바이럴 영업에 전적으로 의존. 법무법인 심은 사실상 이름만 빌린 형태로, 개인 브랜딩과 직접 영업이 사업 성패를 결정하는 구조입니다. 유료 광고 없이 순수 오가닉으로 약 1.4만 팔로워를 확보한 것은 의미 있는 성과이나, 채널 다변화와 수익 퍼널 체계화가 시급합니다.
+        </div>
+    </div>
+</section>
+
+<!-- 2. SOCIAL MEDIA ANALYSIS -->
+<section class="section" id="social" style="background: rgba(233, 69, 96, 0.03);">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">02 — Social Media Analysis</div>
+            <h2 class="section-title">SNS 채널 심층 분석</h2>
+            <p class="section-subtitle">@your_lawyer_yj 인스타그램 & 쓰레드 계정 분석</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="grid-2 fade-in">
+            <!-- Threads Analysis -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: rgba(100, 181, 246, 0.15);">🔵</div>
+                    <div>
+                        <div class="card-title">Threads 분석</div>
+                        <div class="card-subtitle">주력 바이럴 채널 · 9,815 팔로워</div>
+                    </div>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">평균 좋아요</span>
+                    <span class="metric-value">38.5회/게시물</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">최고 성과 게시물</span>
+                    <span class="metric-value">116 좋아요</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">참여율</span>
+                    <span class="metric-value">0.2~0.5%</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">포스팅 빈도</span>
+                    <span class="metric-value">일 2~3회 (최근)</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">활동 시간대</span>
+                    <span class="metric-value">24시간 전 시간대</span>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <span class="tag tag-accent">성과 공유</span>
+                    <span class="tag tag-blue">일상 콘텐츠</span>
+                    <span class="tag tag-gold">동기부여</span>
+                    <span class="tag tag-green">사칭 경고</span>
+                </div>
+            </div>
+
+            <!-- Instagram Analysis -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon" style="background: rgba(245, 197, 24, 0.15);">📸</div>
+                    <div>
+                        <div class="card-title">Instagram 분석</div>
+                        <div class="card-subtitle">비주얼 콘텐츠 채널 · 4,012 팔로워</div>
+                    </div>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">게시물 수</span>
+                    <span class="metric-value">18개</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">팔로잉</span>
+                    <span class="metric-value">606명</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">콘텐츠 유형</span>
+                    <span class="metric-value">법률 정보 + 일상</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">DM 상담</span>
+                    <span class="metric-value">활성 (쓰레드 연동)</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">게시물 빈도</span>
+                    <span class="metric-value">비정기적 (저빈도)</span>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <span class="tag tag-accent">형사전문</span>
+                    <span class="tag tag-blue">성범죄</span>
+                    <span class="tag tag-gold">24시 상담</span>
+                    <span class="tag tag-green">운동하는 변호사</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Theme Analysis -->
+        <div class="card fade-in" style="margin-top: 2rem;">
+            <div class="card-header">
+                <div class="card-icon" style="background: rgba(245, 197, 24, 0.15);">📊</div>
+                <div>
+                    <div class="card-title">콘텐츠 유형별 성과 분석</div>
+                    <div class="card-subtitle">쓰레드 게시물 기준</div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1.2rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                    <span style="font-size: 0.9rem;">요일별 응원 (~요팅)</span>
+                    <span style="font-size: 0.9rem; color: var(--accent-light);">116 좋아요 최고</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%; background: var(--gradient-2);"></div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1.2rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                    <span style="font-size: 0.9rem;">플랫폼/사업 공지</span>
+                    <span style="font-size: 0.9rem; color: var(--accent-light);">85 좋아요</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 73%; background: var(--gradient-1);"></div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1.2rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                    <span style="font-size: 0.9rem;">사건 승소/성과</span>
+                    <span style="font-size: 0.9rem; color: var(--accent-light);">30~46 좋아요</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%; background: var(--gradient-3);"></div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1.2rem;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                    <span style="font-size: 0.9rem;">일상/비하인드</span>
+                    <span style="font-size: 0.9rem; color: var(--accent-light);">21~35 좋아요</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 30%; background: linear-gradient(135deg, #64b5f6, #0f3460);"></div>
+                </div>
+            </div>
+
+            <div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                    <span style="font-size: 0.9rem;">사칭 경고</span>
+                    <span style="font-size: 0.9rem; color: var(--accent-light);">25~30 좋아요</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 26%; background: linear-gradient(135deg, #81c784, #0f3460);"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box fade-in">
+            <strong>핵심 인사이트:</strong> "꽃변" 퍼스널 브랜딩이 매우 효과적. 친근하면서도 전문적인 톤이 팔로워 신뢰를 형성. 다만 인스타그램(18개 게시물)은 쓰레드 대비 극히 저활용 상태이며, 콘텐츠 포맷이 텍스트 중심으로 단일화되어 있음. 리퀴드 커뮤니티(요팅 시리즈 등)는 충성 팔로워 기반 형성에 성공.
+        </div>
+    </div>
+</section>
+
+<!-- 2.5 SNS PROBLEM DIAGNOSIS -->
+<section class="section" id="problems">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">02-2 — SNS Problem Diagnosis</div>
+            <h2 class="section-title">SNS 채널 문제점 진단</h2>
+            <p class="section-subtitle">@your_lawyer_yj 인스타그램 & 쓰레드 계정의 구체적 문제점과 개선 방안</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <!-- Problem 1: Instagram Severely Underutilized -->
+        <div class="problem-card fade-in">
+            <div class="problem-header">
+                <span class="problem-severity severity-critical">CRITICAL</span>
+                <strong>문제 1: 인스타그램 극심한 저활용 — 게시물 18개</strong>
+            </div>
+            <div class="problem-body">
+                <div class="problem-screenshot">
+                    <div class="screenshot-label">Instagram @your_lawyer_yj 현황</div>
+                    <div class="mock-profile">
+                        <img src="https://cdn.prod.website-files.com/65d7bce5224f2915d50402f0/68f05f18ea051e29b5e8be6e_%EA%B9%80%EC%98%81%EC%A7%80%20%EB%B3%80%ED%98%B8%EC%82%AC%20%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A6%88.png" alt="프로필" class="mock-avatar">
+                        <div class="mock-stats">
+                            <div>
+                                <div class="mock-stat-num" style="color: var(--accent);">18 <span class="annotation-arrow">문제</span></div>
+                                <div class="mock-stat-label">게시물</div>
+                            </div>
+                            <div>
+                                <div class="mock-stat-num">4,012</div>
+                                <div class="mock-stat-label">팔로워</div>
+                            </div>
+                            <div>
+                                <div class="mock-stat-num">606</div>
+                                <div class="mock-stat-label">팔로잉</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mock-bio">
+                        형사전문변호사 이대과탑 → 이로<br>
+                        꽃길 깔아드리는 꽃변 / 꽃뱀 잡는 꽃변<br>
+                        24시 긴급상담(유료) 010-5961-1638
+                    </div>
+                    <div class="mock-grid">
+                        <div class="mock-post">게시물 1</div>
+                        <div class="mock-post">게시물 2</div>
+                        <div class="mock-post">게시물 3</div>
+                        <div class="mock-post">게시물 4</div>
+                        <div class="mock-post">게시물 5</div>
+                        <div class="mock-post">게시물 6</div>
+                        <div class="mock-post" style="opacity: 0.3;">빈 슬롯</div>
+                        <div class="mock-post" style="opacity: 0.3;">빈 슬롯</div>
+                        <div class="mock-post" style="opacity: 0.3;">빈 슬롯</div>
+                    </div>
+                </div>
+
+                <div class="problem-annotation" style="margin-top: 1rem;">
+                    <strong>진단:</strong> 팔로워 4,012명 대비 게시물 18개는 심각한 콘텐츠 부족. 인스타그램은 "그리드 미학"이 첫인상을 결정하는 플랫폼인데, 피드가 거의 비어 있어 <strong>프로필 방문 시 전문성과 활동성에 의문</strong>을 갖게 만듦. 잠재 고객이 프로필에 들어와도 "이 변호사 활동을 안 하나?"라는 인상을 받을 가능성 높음.
+                </div>
+
+                <div class="fix-suggestion">
+                    <div class="fix-title">개선안</div>
+                    <ul class="styled-list">
+                        <li>최소 주 3회 포스팅으로 그리드 채우기 (릴스 2회 + 카드뉴스 1회)</li>
+                        <li>기존 쓰레드 인기 콘텐츠를 인스타 카드뉴스로 리포맷</li>
+                        <li>12개 이상 게시물이 쌓이면 그리드 첫 9개의 비주얼 통일감 작업</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem 2: No Story Highlights -->
+        <div class="problem-card fade-in">
+            <div class="problem-header">
+                <span class="problem-severity severity-critical">CRITICAL</span>
+                <strong>문제 2: 인스타그램 스토리 하이라이트 미구성</strong>
+            </div>
+            <div class="problem-body">
+                <div class="problem-screenshot">
+                    <div class="screenshot-label">Instagram 하이라이트 영역 (비어 있음)</div>
+                    <div style="display: flex; gap: 1rem; padding: 1rem; justify-content: center;">
+                        <div style="text-align: center;">
+                            <div style="width: 64px; height: 64px; border-radius: 50%; border: 2px dashed #333; display: flex; align-items: center; justify-content: center; color: #333; font-size: 1.5rem;">+</div>
+                            <div style="font-size: 0.7rem; color: #555; margin-top: 0.3rem;">비어 있음</div>
+                        </div>
+                        <div style="text-align: center; opacity: 0.3;">
+                            <div style="width: 64px; height: 64px; border-radius: 50%; border: 2px dashed #222;"></div>
+                            <div style="font-size: 0.7rem; color: #333; margin-top: 0.3rem;">없음</div>
+                        </div>
+                        <div style="text-align: center; opacity: 0.3;">
+                            <div style="width: 64px; height: 64px; border-radius: 50%; border: 2px dashed #222;"></div>
+                            <div style="font-size: 0.7rem; color: #333; margin-top: 0.3rem;">없음</div>
+                        </div>
+                        <div style="text-align: center; opacity: 0.3;">
+                            <div style="width: 64px; height: 64px; border-radius: 50%; border: 2px dashed #222;"></div>
+                            <div style="font-size: 0.7rem; color: #333; margin-top: 0.3rem;">없음</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="problem-annotation">
+                    <strong>진단:</strong> 스토리 하이라이트는 인스타 프로필의 "미니 웹사이트" 역할. 잠재 고객이 프로필 방문 시 <strong>상담 방법, 전문 분야, 고객 후기, 비용</strong>을 한눈에 볼 수 있어야 하는데, 현재 이 영역이 완전히 비어 있어 전환 기회를 놓치고 있음.
+                </div>
+
+                <div class="fix-suggestion">
+                    <div class="fix-title">개선안 — 필수 하이라이트 4개 구성</div>
+                    <div style="display: flex; gap: 1.5rem; margin-top: 0.8rem; justify-content: center; flex-wrap: wrap;">
+                        <div style="text-align: center;">
+                            <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--gradient-1); display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">&#9878;</div>
+                            <div style="font-size: 0.75rem; margin-top: 0.3rem; color: #81c784;">전문분야</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--gradient-2); display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">&#128222;</div>
+                            <div style="font-size: 0.75rem; margin-top: 0.3rem; color: #81c784;">상담안내</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="width: 64px; height: 64px; border-radius: 50%; background: var(--gradient-3); display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">&#11088;</div>
+                            <div style="font-size: 0.75rem; margin-top: 0.3rem; color: #81c784;">고객후기</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #81c784, #0f3460); display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">&#127811;</div>
+                            <div style="font-size: 0.75rem; margin-top: 0.3rem; color: #81c784;">꽃변일상</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem 3: No Reels/Video Content -->
+        <div class="problem-card fade-in">
+            <div class="problem-header">
+                <span class="problem-severity severity-critical">CRITICAL</span>
+                <strong>문제 3: 릴스(Reels) / 영상 콘텐츠 전무</strong>
+            </div>
+            <div class="problem-body">
+                <div class="problem-annotation">
+                    <strong>진단:</strong> 2026년 인스타그램 알고리즘은 릴스에 <strong>10배 이상의 도달률</strong>을 부여. 현재 계정에 릴스가 단 한 개도 없어, 인스타그램의 핵심 성장 엔진을 완전히 방치한 상태. 경쟁 법률 인플루언서들은 릴스/숏폼으로 수십만 조회수를 확보하고 있음.
+                </div>
+
+                <div class="before-after" style="margin: 1.5rem 0;">
+                    <div class="before-box">
+                        <div class="before-label">현재 (텍스트 only)</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">
+                            - 이미지 게시물 18개<br>
+                            - 릴스 0개<br>
+                            - 도달률: 팔로워 대비 낮음<br>
+                            - 신규 유입: 매우 제한적
+                        </div>
+                    </div>
+                    <div class="before-after-arrow">→</div>
+                    <div class="after-box">
+                        <div class="after-label">개선 후 (릴스 도입)</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">
+                            - 릴스 주 2회 업로드<br>
+                            - 예상 도달률: 5~10배 증가<br>
+                            - 탐색 탭 노출 → 비팔로워 유입<br>
+                            - 구독 전환율 대폭 상승
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fix-suggestion">
+                    <div class="fix-title">개선안 — 릴스 콘텐츠 즉시 시작</div>
+                    <ul class="styled-list">
+                        <li>"경찰 조사 시 이것만 기억하세요" — 60초 법률 팁 (스마트폰 촬영)</li>
+                        <li>"변호사가 알려주는 카톡 증거 보존법" — 화면 녹화 + 보이스</li>
+                        <li>"새벽 긴급 출동 브이로그" — 24시간 변호사 리얼 일상</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem 4: Threads Bio Issue -->
+        <div class="problem-card fade-in">
+            <div class="problem-header">
+                <span class="problem-severity severity-warning">WARNING</span>
+                <strong>문제 4: 쓰레드 프로필 바이오 최적화 부족</strong>
+            </div>
+            <div class="problem-body">
+                <div class="problem-screenshot">
+                    <div class="screenshot-label">Threads @your_lawyer_yj 바이오 현황</div>
+                    <div style="padding: 1rem;">
+                        <div class="mock-thread-header">
+                            <img src="https://cdn.prod.website-files.com/65d7bce5224f2915d50402f0/68f05f18ea051e29b5e8be6e_%EA%B9%80%EC%98%81%EC%A7%80%20%EB%B3%80%ED%98%B8%EC%82%AC%20%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A6%88.png" alt="프로필" class="mock-thread-avatar">
+                            <div>
+                                <div class="mock-thread-username">김영지 변호사</div>
+                                <div class="mock-thread-time">@your_lawyer_yj · 9,815 followers</div>
+                            </div>
+                        </div>
+                        <div style="background: rgba(233, 69, 96, 0.05); border: 1px dashed rgba(233, 69, 96, 0.3); border-radius: 8px; padding: 1rem; margin: 0.5rem 0;">
+                            <div style="font-size: 0.85rem; line-height: 1.6;">
+                                형사전문변호사 이대과탑 -> 이로 <span class="annotation-arrow">약어 → 이해 어려움</span><br>
+                                꽃길 깔아드리는 꽃변 / 꽃뱀 잡는 꽃변<br>
+                                24시 긴급상담(유료) 010-5961-1638 <span class="annotation-arrow">전화번호 노출</span><br>
+                                서울디자인재단 정보공개심사위원<br>
+                                부천원미경찰서 경미범죄심사위원<br>
+                                <span style="color: #555;">#변호사 #형사전문변호사 #형사변호사 #변호사상담 #운동하는여자 #법률상담</span>
+                                <span class="annotation-arrow">해시태그 과다</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="problem-annotation warning" style="margin-top: 0.5rem;">
+                    <strong>진단 1 — "이대과탑 -> 이로" 약어:</strong> 처음 방문하는 잠재 고객에게 "이로"가 이화여대 법학전문대학원(로스쿨)의 약어라는 것이 직관적이지 않음. 바이오의 첫 줄은 가장 중요한 USP(핵심 가치 제안)이 와야 함.
+                </div>
+                <div class="problem-annotation warning">
+                    <strong>진단 2 — 개인 전화번호 직접 노출:</strong> 사칭 피해가 이미 발생한 상황에서, 개인 번호를 바이오에 노출하는 것은 보안 리스크. 또한 상담 품질 관리가 어려움.
+                </div>
+                <div class="problem-annotation warning">
+                    <strong>진단 3 — 해시태그 6개 바이오 삽입:</strong> 쓰레드 바이오에서 해시태그는 인스타처럼 검색에 작동하지 않음. 공간만 차지하고 프로페셔널함을 저하시킴.
+                </div>
+
+                <div class="fix-suggestion">
+                    <div class="fix-title">개선안 — 바이오 리라이팅</div>
+                    <div class="before-after" style="margin-top: 0.8rem;">
+                        <div class="before-box">
+                            <div class="before-label">Before</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
+                                형사전문변호사 이대과탑 -> 이로<br>
+                                꽃길 깔아드리는 꽃변 / 꽃뱀 잡는 꽃변<br>
+                                24시 긴급상담(유료) 010-5961-1638<br>
+                                서울디자인재단 정보공개심사위원<br>
+                                부천원미경찰서 경미범죄심사위원<br>
+                                #변호사 #형사전문 ... (6개)
+                            </div>
+                        </div>
+                        <div class="before-after-arrow">→</div>
+                        <div class="after-box">
+                            <div class="after-label">After (제안)</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
+                                형사전문변호사 | 성범죄·폭행·사기<br>
+                                이화여대 영문학 → 이화 로스쿨<br>
+                                꽃길 깔아드리는 꽃변 &#127804;<br>
+                                24시 긴급상담 &#128073; 카카오톡 링크<br>
+                                법무법인 심 · 강남 삼성동
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem 5: Threads Inconsistent Posting -->
+        <div class="problem-card fade-in">
+            <div class="problem-header">
+                <span class="problem-severity severity-warning">WARNING</span>
+                <strong>문제 5: 쓰레드 포스팅 일관성 부족 — 5개월 공백 후 폭발 업로드</strong>
+            </div>
+            <div class="problem-body">
+                <div class="problem-screenshot">
+                    <div class="screenshot-label">Threads 포스팅 타임라인</div>
+                    <div style="padding: 1rem;">
+                        <div style="display: flex; align-items: end; gap: 4px; height: 120px; padding: 0.5rem;">
+                            <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: end;">
+                                <div style="width: 100%; height: 15px; background: rgba(233, 69, 96, 0.3); border-radius: 4px 4px 0 0;"></div>
+                                <div style="font-size: 0.6rem; color: var(--text-muted); margin-top: 0.2rem;">10월</div>
+                            </div>
+                            <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: end;">
+                                <div style="width: 100%; height: 0px; background: rgba(233, 69, 96, 0.3); border-radius: 4px 4px 0 0;"></div>
+                                <div style="font-size: 0.6rem; color: #555; margin-top: 0.2rem;">11월</div>
+                            </div>
+                            <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: end;">
+                                <div style="width: 100%; height: 0px; background: rgba(233, 69, 96, 0.3); border-radius: 4px 4px 0 0;"></div>
+                                <div style="font-size: 0.6rem; color: #555; margin-top: 0.2rem;">12월</div>
+                            </div>
+                            <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: end;">
+                                <div style="width: 100%; height: 0px; background: rgba(233, 69, 96, 0.3); border-radius: 4px 4px 0 0;"></div>
+                                <div style="font-size: 0.6rem; color: #555; margin-top: 0.2rem;">1월</div>
+                            </div>
+                            <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: end;">
+                                <div style="width: 100%; height: 0px; background: rgba(233, 69, 96, 0.3); border-radius: 4px 4px 0 0;"></div>
+                                <div style="font-size: 0.6rem; color: #555; margin-top: 0.2rem;">2월</div>
+                            </div>
+                            <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: end;">
+                                <div style="width: 100%; height: 100px; background: var(--gradient-2); border-radius: 4px 4px 0 0; position: relative;">
+                                    <span style="position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 0.7rem; color: var(--accent-light); white-space: nowrap;">14 posts!</span>
+                                </div>
+                                <div style="font-size: 0.6rem; color: var(--accent-light); margin-top: 0.2rem; font-weight: 600;">3월</div>
+                            </div>
+                        </div>
+                        <div style="border-top: 1px dashed #333; padding-top: 0.5rem; text-align: center;">
+                            <span style="font-size: 0.75rem; color: var(--accent-light);">← 5개월 공백 →</span>
+                            <span style="font-size: 0.75rem; color: var(--gold); margin-left: 0.5rem;">폭발 업로드</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="problem-annotation warning">
+                    <strong>진단:</strong> 2025년 10월 게시물 이후 <strong>5개월간 완전 무활동</strong>, 2026년 3월에 갑자기 14개 폭발 업로드. 이런 패턴은 알고리즘에 불리하고, 팔로워 이탈을 야기함. SNS는 "빈도 < 일관성"이 핵심. 하루 5개 올리고 3개월 쉬는 것보다 매일 1개가 훨씬 효과적.
+                </div>
+
+                <div class="fix-suggestion">
+                    <div class="fix-title">개선안</div>
+                    <ul class="styled-list">
+                        <li>하루 2개 포스팅 고정 루틴 수립 (오전 1 + 오후/저녁 1)</li>
+                        <li>2주치 콘텐츠를 미리 작성하여 버퍼 확보</li>
+                        <li>예약 발행 툴 사용 (Meta Business Suite)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem 6: No CTA Link -->
+        <div class="problem-card fade-in">
+            <div class="problem-header">
+                <span class="problem-severity severity-warning">WARNING</span>
+                <strong>문제 6: 상담 전환 경로(CTA) 비체계적</strong>
+            </div>
+            <div class="problem-body">
+                <div class="problem-screenshot">
+                    <div class="screenshot-label">현재 상담 전환 경로</div>
+                    <div style="padding: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
+                            <div style="padding: 0.5rem 1rem; background: rgba(233, 69, 96, 0.1); border: 1px dashed var(--accent); border-radius: 8px; font-size: 0.8rem;">
+                                쓰레드에서 발견
+                            </div>
+                            <span style="color: var(--text-muted);">→</span>
+                            <div style="padding: 0.5rem 1rem; background: rgba(233, 69, 96, 0.1); border: 1px dashed var(--accent); border-radius: 8px; font-size: 0.8rem;">
+                                프로필에서 번호 찾기
+                            </div>
+                            <span style="color: var(--text-muted);">→</span>
+                            <div style="padding: 0.5rem 1rem; background: rgba(233, 69, 96, 0.1); border: 1px dashed var(--accent); border-radius: 8px; font-size: 0.8rem;">
+                                전화 걸기 <span class="annotation-arrow">이탈 지점</span>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);">
+                            쓰레드 DM 미작동 (본인 고지) → 인스타 DM 유도 → 하지만 인스타 저활용으로 신뢰 부족
+                        </div>
+                    </div>
+                </div>
+
+                <div class="problem-annotation">
+                    <strong>진단:</strong> 상담으로 전환되는 경로가 "전화번호 직접 기재"에만 의존. 쓰레드 DM은 작동 안 하고, 인스타 DM으로 유도하지만 인스타는 저활용 상태. <strong>카카오톡 채널, 네이버 예약, 원클릭 링크</strong> 등 현대적 전환 도구가 전무.
+                </div>
+
+                <div class="fix-suggestion">
+                    <div class="fix-title">개선안 — 다중 CTA 구축</div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-top: 0.8rem;">
+                        <div style="padding: 0.5rem 1rem; background: rgba(76, 175, 80, 0.15); border: 1px solid rgba(76, 175, 80, 0.3); border-radius: 8px; font-size: 0.8rem;">
+                            SNS 콘텐츠
+                        </div>
+                        <span style="color: #81c784;">→</span>
+                        <div style="padding: 0.5rem 1rem; background: rgba(76, 175, 80, 0.15); border: 1px solid rgba(76, 175, 80, 0.3); border-radius: 8px; font-size: 0.8rem;">
+                            링크트리/프로필 링크
+                        </div>
+                        <span style="color: #81c784;">→</span>
+                        <div style="padding: 0.5rem 1rem; background: rgba(76, 175, 80, 0.15); border: 1px solid rgba(76, 175, 80, 0.3); border-radius: 8px; font-size: 0.8rem;">
+                            카카오톡 / 전화 / 예약
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem 7: LawTalk Deletion -->
+        <div class="problem-card fade-in">
+            <div class="problem-header">
+                <span class="problem-severity severity-info">INFO</span>
+                <strong>문제 7: 로톡(LawTalk) 프로필 자진 삭제</strong>
+            </div>
+            <div class="problem-body">
+                <div class="problem-screenshot">
+                    <div class="screenshot-label">Threads 게시물 — 로톡 삭제 공지</div>
+                    <div class="mock-thread-post">
+                        <div class="mock-thread-header">
+                            <img src="https://cdn.prod.website-files.com/65d7bce5224f2915d50402f0/68f05f18ea051e29b5e8be6e_%EA%B9%80%EC%98%81%EC%A7%80%20%EB%B3%80%ED%98%B8%EC%82%AC%20%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A6%88.png" alt="프로필" class="mock-thread-avatar">
+                            <div>
+                                <div class="mock-thread-username">김영지 변호사</div>
+                                <div class="mock-thread-time">@your_lawyer_yj</div>
+                            </div>
+                        </div>
+                        <div class="mock-thread-body">
+                            로톡 프로필을 삭제했습니다.<br>
+                            앞으로는 직접 연락 부탁드립니다.
+                        </div>
+                        <div class="mock-thread-footer">
+                            <span>&#10084; 85</span>
+                            <span>&#128172; 댓글</span>
+                            <span>&#128257; 리포스트</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="problem-annotation info">
+                    <strong>진단:</strong> 로톡은 월 수백만 명이 "변호사 찾기"로 방문하는 최대 법률 플랫폼. 수수료 구조에 불만이 있더라도, <strong>검색 유입 채널을 자발적으로 차단</strong>한 셈. 이 결정을 보상할 만큼의 자체 채널 역량이 아직 구축되지 않은 상태에서의 이탈은 리스크가 큼.
+                </div>
+
+                <div class="fix-suggestion">
+                    <div class="fix-title">개선안</div>
+                    <ul class="styled-list">
+                        <li>로톡 복귀보다는 <strong>네이버 블로그 + 구글 SEO</strong>로 자체 검색 유입 확보가 우선</li>
+                        <li>개인 웹사이트에 상담 예약 기능 구현하여 로톡 대체</li>
+                        <li>로톡 삭제 결정이 자체 채널 성숙 후였다면 이상적이었으나, 현재는 빈틈이 존재</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem 8: Impersonation -->
+        <div class="problem-card fade-in">
+            <div class="problem-header">
+                <span class="problem-severity severity-critical">CRITICAL</span>
+                <strong>문제 8: 사칭 계정 반복 발생 — 브랜드 보호 미흡</strong>
+            </div>
+            <div class="problem-body">
+                <div class="problem-screenshot">
+                    <div class="screenshot-label">Threads 사칭 경고 게시물 (다수 확인)</div>
+                    <div class="mock-thread-post">
+                        <div class="mock-thread-header">
+                            <img src="https://cdn.prod.website-files.com/65d7bce5224f2915d50402f0/68f05f18ea051e29b5e8be6e_%EA%B9%80%EC%98%81%EC%A7%80%20%EB%B3%80%ED%98%B8%EC%82%AC%20%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A6%88.png" alt="프로필" class="mock-thread-avatar">
+                            <div>
+                                <div class="mock-thread-username">김영지 변호사</div>
+                                <div class="mock-thread-time">@your_lawyer_yj</div>
+                            </div>
+                        </div>
+                        <div class="mock-thread-body">
+                            &#9888; 네이버 밴드, 주식방에서 제 사진으로 사칭하는 사람이 있습니다.<br>
+                            피해자 2명 확보, <strong>체포영장 발부</strong>되었습니다.<br>
+                            저는 주식/투자 권유를 절대 하지 않습니다.
+                        </div>
+                        <div class="mock-thread-footer">
+                            <span>&#10084; 25~30</span>
+                            <span>&#128172; 댓글</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="problem-annotation">
+                    <strong>진단:</strong> 사칭 계정이 <strong>반복적으로 발생</strong>하고 있으며 실제 피해자까지 발생. 인스타/쓰레드 인증마크(파란 체크)가 없어 일반 사용자가 진위 구별이 어려움. 개인 변호사의 경우 사칭은 브랜드와 신뢰에 치명적.
+                </div>
+
+                <div class="fix-suggestion">
+                    <div class="fix-title">개선안</div>
+                    <ul class="styled-list">
+                        <li>Meta Verified(인증마크) 신청 — 월 $11.99로 파란 체크 획득</li>
+                        <li>공식 웹사이트에 "공식 SNS 채널 목록" 명시</li>
+                        <li>프로필 바이오에 "공식 계정은 여기뿐" 문구 추가</li>
+                        <li>사칭 발견 시 Meta 신고 + 경고 포스팅 자동 템플릿 준비</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="highlight-box fade-in" style="border-left-color: var(--gold);">
+            <strong style="color: var(--gold);">문제점 종합 요약:</strong><br><br>
+            <strong>CRITICAL (즉시 개선):</strong> 인스타 저활용(18게시물), 스토리 하이라이트 미구성, 릴스/영상 전무, 사칭 대응<br>
+            <strong>WARNING (1개월 내):</strong> 쓰레드 바이오 최적화, 포스팅 일관성, CTA 경로 체계화<br>
+            <strong>INFO (전략적 판단):</strong> 로톡 삭제에 대한 대안 채널 구축<br><br>
+            현재 김영지 변호사의 SNS는 <strong>"좋은 콘텐츠 감각 + 부실한 인프라"</strong> 상태입니다. 콘텐츠 톤과 퍼스널 브랜딩은 이미 검증되었으나, 이를 받쳐줄 채널 인프라(릴스, 하이라이트, CTA, 일관성)가 크게 부족합니다. 인프라만 갖추면 성장 가속도가 붙을 수 있는 유리한 포지션입니다.
+        </div>
+    </div>
+</section>
+
+<!-- 3. SWOT -->
+<section class="section" id="swot">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">03 — SWOT Analysis</div>
+            <h2 class="section-title">SWOT 분석</h2>
+            <p class="section-subtitle">현재 마케팅 포지션의 강점, 약점, 기회, 위협 요인</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="swot-grid fade-in">
+            <div class="swot-card strength">
+                <div class="swot-title" style="color: #81c784;">✦ Strengths (강점)</div>
+                <ul class="swot-list">
+                    <li>"꽃변" — 차별화된 퍼스널 브랜드 이미 구축</li>
+                    <li>24시간 긴급상담 체계 운영 (실제 심야 포스팅으로 입증)</li>
+                    <li>형사/성범죄 분야 전문성과 승소 사례 보유</li>
+                    <li>친근하면서도 전문적인 톤 — 진입장벽이 낮은 소통</li>
+                    <li>광고비 0원으로 1.4만 오가닉 팔로워 확보</li>
+                    <li>이화여대 학벌 — 여성 타겟 신뢰 시그널</li>
+                    <li>영어 상담 가능 — 외국인 고객 잠재력</li>
+                    <li>로톡 약속이행률 100%, 긍정적 고객 후기</li>
+                </ul>
+            </div>
+
+            <div class="swot-card weakness">
+                <div class="swot-title" style="color: var(--accent-light);">✦ Weaknesses (약점)</div>
+                <ul class="swot-list">
+                    <li>마케팅 채널이 인스타/쓰레드 2개에 국한</li>
+                    <li>인스타그램 게시물 18개 — 극히 저활용</li>
+                    <li>콘텐츠 포맷이 텍스트 위주로 단일</li>
+                    <li>영상/숏폼 콘텐츠 전무 (유튜브/틱톡 부재)</li>
+                    <li>독자적 웹사이트/블로그 없음 (SEO 사각지대)</li>
+                    <li>로톡 프로필 자진 삭제 — 플랫폼 유입 차단</li>
+                    <li>법무법인 심의 브랜드와 시너지 미활용</li>
+                    <li>체계적 CRM/리드 관리 시스템 부재 추정</li>
+                </ul>
+            </div>
+
+            <div class="swot-card opportunity">
+                <div class="swot-title" style="color: #64b5f6;">✦ Opportunities (기회)</div>
+                <ul class="swot-list">
+                    <li>법률 유튜브/숏폼 시장 급성장 (법률 콘텐츠 수요↑)</li>
+                    <li>디지털 성범죄 증가 → 전문 변호사 수요 급증</li>
+                    <li>MZ세대의 SNS 기반 변호사 선임 트렌드</li>
+                    <li>"운동하는 변호사" — 헬스/피트니스 커뮤니티 접점</li>
+                    <li>네이버 블로그/지식인 SEO를 통한 검색 유입</li>
+                    <li>법무법인 심 심규덕 대표의 방송 인지도 레버리지</li>
+                    <li>여성 형사전문 변호사 — 차별화 포인트</li>
+                    <li>외국인 대상 형사 상담 (영어) 니치마켓</li>
+                </ul>
+            </div>
+
+            <div class="swot-card threat">
+                <div class="swot-title" style="color: var(--gold);">✦ Threats (위협)</div>
+                <ul class="swot-list">
+                    <li>대형 로펌/법무법인의 디지털 마케팅 투자 확대</li>
+                    <li>로톡 등 플랫폼 의존 변호사들의 가격 경쟁</li>
+                    <li>사칭 계정 문제 — 이미 피해 사례 발생</li>
+                    <li>SNS 알고리즘 변경 리스크 (오가닉 도달률↓)</li>
+                    <li>변호사 광고 규제 강화 가능성</li>
+                    <li>개인 브랜드 의존 → 번아웃/건강 리스크</li>
+                    <li>AI 법률 상담 서비스 확산</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. TARGET PERSONA -->
+<section class="section" id="persona" style="background: rgba(233, 69, 96, 0.03);">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">04 — Target Persona</div>
+            <h2 class="section-title">타겟 페르소나</h2>
+            <p class="section-subtitle">핵심 고객군 프로파일링</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="grid-3 fade-in">
+            <div class="persona-card">
+                <div class="persona-avatar">👩</div>
+                <div class="persona-name">페르소나 A: 성범죄 피해 여성</div>
+                <div class="persona-detail">
+                    <p>25~40세 여성</p>
+                    <p style="margin-top: 0.5rem;">직장 내 성추행, 데이트 폭력, 디지털 성범죄 피해</p>
+                    <p style="margin-top: 0.5rem; color: var(--accent-light);">Pain: "남성 변호사에게 말하기 어려움" "어디서부터 어떻게 해야 할지 모름"</p>
+                    <p style="margin-top: 0.5rem;">검색: "성범죄 여자변호사" "강제추행 고소 방법"</p>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <span class="tag tag-accent">최우선 타겟</span>
+                </div>
+            </div>
+
+            <div class="persona-card">
+                <div class="persona-avatar">👨</div>
+                <div class="persona-name">페르소나 B: 형사 혐의 피의자</div>
+                <div class="persona-detail">
+                    <p>30~50세 남성</p>
+                    <p style="margin-top: 0.5rem;">성범죄/사기/폭행 혐의로 수사 받는 상황</p>
+                    <p style="margin-top: 0.5rem; color: var(--accent-light);">Pain: "당장 변호사가 필요" "새벽에 연락 가능한 곳"</p>
+                    <p style="margin-top: 0.5rem;">검색: "형사변호사 긴급" "24시간 변호사"</p>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <span class="tag tag-gold">고수익 타겟</span>
+                </div>
+            </div>
+
+            <div class="persona-card">
+                <div class="persona-avatar">👥</div>
+                <div class="persona-name">페르소나 C: 가족/지인 의뢰</div>
+                <div class="persona-detail">
+                    <p>40~60세 부모세대</p>
+                    <p style="margin-top: 0.5rem;">자녀가 형사 사건에 연루, 대리 상담</p>
+                    <p style="margin-top: 0.5rem; color: var(--accent-light);">Pain: "아이가 잘못된 건 아닌데" "믿을 수 있는 변호사"</p>
+                    <p style="margin-top: 0.5rem;">검색: "자녀 형사사건 변호사" "성범죄 변호사 추천"</p>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <span class="tag tag-blue">검색 유입 타겟</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. MARKETING STRATEGY -->
+<section class="section" id="strategy">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">05 — Marketing Strategy</div>
+            <h2 class="section-title">핵심 마케팅 전략</h2>
+            <p class="section-subtitle">3가지 축으로 구성된 통합 마케팅 전략</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="grid-3 fade-in">
+            <div class="card" style="border-top: 3px solid var(--accent);">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔥</div>
+                    <h3 style="font-size: 1.1rem;">전략 1: 콘텐츠 다각화</h3>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">텍스트 → 멀티포맷 전환</p>
+                </div>
+                <ul class="styled-list">
+                    <li>유튜브 숏츠/릴스 법률 콘텐츠 시작</li>
+                    <li>인스타 카드뉴스 시리즈 (법률 상식)</li>
+                    <li>"꽃변의 하루" 브이로그 시리즈</li>
+                    <li>승소 사례 스토리텔링 (익명화)</li>
+                    <li>라이브 Q&A (월 1회 무료 상담)</li>
+                </ul>
+            </div>
+
+            <div class="card" style="border-top: 3px solid var(--gold);">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎯</div>
+                    <h3 style="font-size: 1.1rem;">전략 2: 검색 유입 확보</h3>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">오가닉 검색 트래픽 구축</p>
+                </div>
+                <ul class="styled-list">
+                    <li>네이버 블로그 개설 및 SEO 최적화</li>
+                    <li>네이버 지식인 전문가 답변 활동</li>
+                    <li>개인 웹사이트 제작 (포트폴리오)</li>
+                    <li>구글 마이비즈니스 등록</li>
+                    <li>법률 키워드 롱테일 콘텐츠 전략</li>
+                </ul>
+            </div>
+
+            <div class="card" style="border-top: 3px solid #64b5f6;">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💎</div>
+                    <h3 style="font-size: 1.1rem;">전략 3: 신뢰 자산 구축</h3>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">전문성 증명 & 사회적 증거</p>
+                </div>
+                <ul class="styled-list">
+                    <li>언론 기고/인터뷰 (법률신문, 여성지)</li>
+                    <li>고객 후기 체계적 수집 및 게시</li>
+                    <li>법률 칼럼 연재 (매체 기고)</li>
+                    <li>강연/세미나 출강 (대학, 기업)</li>
+                    <li>법무법인 심 유튜브 콜라보</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. CHANNEL EXPANSION -->
+<section class="section" id="channels" style="background: rgba(233, 69, 96, 0.03);">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">06 — Channel Expansion</div>
+            <h2 class="section-title">채널 확장 전략</h2>
+            <p class="section-subtitle">현재 2개 채널에서 다채널 마케팅 체계로 전환</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="grid-2 fade-in">
+            <!-- 기존 채널 강화 -->
+            <div class="channel-card">
+                <div class="channel-header">
+                    <div class="channel-name">기존 채널 최적화</div>
+                    <div class="channel-desc">인스타그램 + 쓰레드 강화</div>
+                </div>
+                <div class="channel-body">
+                    <h4 style="font-size: 0.95rem; margin-bottom: 1rem; color: var(--accent-light);">Instagram 활성화 (현재 18게시물 → 최소 주 3회)</h4>
+                    <ul class="styled-list">
+                        <li>릴스 콘텐츠 주 2회 업로드</li>
+                        <li>카드뉴스형 법률 상식 시리즈</li>
+                        <li>스토리 하이라이트 정리 (상담안내/후기/전문분야)</li>
+                        <li>인스타 DM 자동응답 설정</li>
+                    </ul>
+                    <h4 style="font-size: 0.95rem; margin: 1.5rem 0 1rem; color: var(--accent-light);">Threads 고도화</h4>
+                    <ul class="styled-list">
+                        <li>포스팅 일관성 유지 (일 2회 고정)</li>
+                        <li>법률 이슈 실시간 해석 콘텐츠</li>
+                        <li>팔로워 참여형 콘텐츠 (투표/질문)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 신규 채널 -->
+            <div class="channel-card">
+                <div class="channel-header">
+                    <div class="channel-name">신규 채널 개설</div>
+                    <div class="channel-desc">검색 유입 & 영상 채널</div>
+                </div>
+                <div class="channel-body">
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <strong style="font-size: 0.95rem;">네이버 블로그</strong>
+                            <span class="priority-high">최우선</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">법률 키워드 SEO · 주 3회 이상 포스팅 · 사건 해설/법률 가이드</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <strong style="font-size: 0.95rem;">유튜브 (숏츠 중심)</strong>
+                            <span class="priority-high">최우선</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">60초 법률 상식 · 사건 리뷰 · 변호사 일상 브이로그</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <strong style="font-size: 0.95rem;">틱톡</strong>
+                            <span class="priority-medium">중기</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">유튜브 숏츠 크로스포스팅 · MZ세대 도달</p>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <strong style="font-size: 0.95rem;">개인 웹사이트</strong>
+                            <span class="priority-medium">중기</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">포트폴리오 · 상담예약 시스템 · 구글 SEO</p>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <strong style="font-size: 0.95rem;">네이버 카페/지식인</strong>
+                            <span class="priority-low">지속</span>
+                        </div>
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">법률 Q&A 답변 · 전문가 노출 · 간접 홍보</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. CONTENT STRATEGY -->
+<section class="section" id="content">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">07 — Content Strategy</div>
+            <h2 class="section-title">콘텐츠 전략</h2>
+            <p class="section-subtitle">주간 콘텐츠 캘린더 및 콘텐츠 믹스</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <!-- Content Mix -->
+        <div class="card fade-in">
+            <div class="card-header">
+                <div class="card-icon" style="background: rgba(233, 69, 96, 0.15);">📝</div>
+                <div>
+                    <div class="card-title">콘텐츠 믹스 비율 (80/20 Rule)</div>
+                    <div class="card-subtitle">가치 제공 80% : 영업/홍보 20%</div>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div>
+                    <h4 style="color: var(--accent-light); margin-bottom: 1rem; font-size: 0.95rem;">가치 콘텐츠 (80%)</h4>
+                    <div style="margin-bottom: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                            <span style="font-size: 0.85rem;">법률 상식/가이드</span>
+                            <span style="font-size: 0.85rem; color: var(--gold);">30%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 30%; background: #81c784;"></div></div>
+                    </div>
+                    <div style="margin-bottom: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                            <span style="font-size: 0.85rem;">사건 해설/이슈 분석</span>
+                            <span style="font-size: 0.85rem; color: var(--gold);">20%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 20%; background: #64b5f6;"></div></div>
+                    </div>
+                    <div style="margin-bottom: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                            <span style="font-size: 0.85rem;">일상/비하인드 (꽃변의 하루)</span>
+                            <span style="font-size: 0.85rem; color: var(--gold);">15%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 15%; background: var(--gold);"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                            <span style="font-size: 0.85rem;">커뮤니티/응원 (요팅 시리즈)</span>
+                            <span style="font-size: 0.85rem; color: var(--gold);">15%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 15%; background: var(--accent);"></div></div>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-light); margin-bottom: 1rem; font-size: 0.95rem;">영업 콘텐츠 (20%)</h4>
+                    <div style="margin-bottom: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                            <span style="font-size: 0.85rem;">승소 사례/성과 공유</span>
+                            <span style="font-size: 0.85rem; color: var(--gold);">12%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 12%; background: var(--gradient-2);"></div></div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+                            <span style="font-size: 0.85rem;">상담 안내/CTA</span>
+                            <span style="font-size: 0.85rem; color: var(--gold);">8%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 8%; background: var(--gradient-1);"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Calendar -->
+        <div class="card fade-in" style="margin-top: 1.5rem;">
+            <div class="card-header">
+                <div class="card-icon" style="background: rgba(245, 197, 24, 0.15);">📅</div>
+                <div>
+                    <div class="card-title">주간 콘텐츠 캘린더 (추천 템플릿)</div>
+                    <div class="card-subtitle">채널별 주간 발행 스케줄</div>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>요일</th>
+                            <th>Threads</th>
+                            <th>Instagram</th>
+                            <th>네이버 블로그</th>
+                            <th>유튜브</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>월</strong></td>
+                            <td>월요팅 + 법률 상식</td>
+                            <td>카드뉴스 (법률 가이드)</td>
+                            <td>법률 칼럼</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>화</strong></td>
+                            <td>화요팅 + 사건 해설</td>
+                            <td>스토리 (일상)</td>
+                            <td>-</td>
+                            <td>숏츠 (법률 상식)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>수</strong></td>
+                            <td>법률 이슈 코멘트</td>
+                            <td>릴스 (법률 팁)</td>
+                            <td>사건 해설</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>목</strong></td>
+                            <td>꽃변 일상 + 성과</td>
+                            <td>스토리 (비하인드)</td>
+                            <td>-</td>
+                            <td>숏츠 (사건 리뷰)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>금</strong></td>
+                            <td>금요팅 + Q&A</td>
+                            <td>카드뉴스 (판례 해설)</td>
+                            <td>주간 법률 뉴스</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>토</strong></td>
+                            <td>가벼운 일상/운동</td>
+                            <td>릴스 (운동/라이프)</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><strong>일</strong></td>
+                            <td>주간 승소사례/후기</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Content Ideas -->
+        <div class="card fade-in" style="margin-top: 1.5rem;">
+            <div class="card-header">
+                <div class="card-icon" style="background: rgba(76, 175, 80, 0.15);">💡</div>
+                <div>
+                    <div class="card-title">킬러 콘텐츠 아이디어 Top 10</div>
+                    <div class="card-subtitle">바이럴 가능성이 높은 콘텐츠 기획안</div>
+                </div>
+            </div>
+            <div class="action-step">
+                <div class="action-number">1</div>
+                <div class="action-content">
+                    <h4>"이것만 알면 경찰서 안 무섭다" 시리즈</h4>
+                    <p>경찰 조사 시 권리, 진술거부권, 변호인 접견 등 — 릴스/숏츠 60초</p>
+                </div>
+            </div>
+            <div class="action-step">
+                <div class="action-number">2</div>
+                <div class="action-content">
+                    <h4>"꽃변의 사건 파일" 스토리텔링</h4>
+                    <p>실제 사건 기반 (익명화) 드라마틱 스토리텔링 — 유튜브 롱폼</p>
+                </div>
+            </div>
+            <div class="action-step">
+                <div class="action-number">3</div>
+                <div class="action-content">
+                    <h4>"변호사가 알려주는 증거 수집법"</h4>
+                    <p>카톡 캡처, 녹음, CCTV 등 일반인이 할 수 있는 증거 확보 팁</p>
+                </div>
+            </div>
+            <div class="action-step">
+                <div class="action-number">4</div>
+                <div class="action-content">
+                    <h4>"새벽 3시 긴급 출동" 브이로그</h4>
+                    <p>24시간 변호사의 실제 긴급 출동 일상 — 차별화 + 신뢰 구축</p>
+                </div>
+            </div>
+            <div class="action-step">
+                <div class="action-number">5</div>
+                <div class="action-content">
+                    <h4>"드라마 vs 현실" 법률 팩트체크</h4>
+                    <p>인기 드라마 법정 장면 분석 — 바이럴성 + 교육적 가치</p>
+                </div>
+            </div>
+            <div class="action-step">
+                <div class="action-number">6</div>
+                <div class="action-content">
+                    <h4>"고소장 쓰는 법" 실전 가이드</h4>
+                    <p>네이버 블로그 SEO 최적화 — 검색 유입 킬러 콘텐츠</p>
+                </div>
+            </div>
+            <div class="action-step">
+                <div class="action-number">7</div>
+                <div class="action-content">
+                    <h4>"운동하는 변호사" 피트니스 콜라보</h4>
+                    <p>헬스 인플루언서 콜라보 — 새로운 타겟층 유입</p>
+                </div>
+            </div>
+            <div class="action-step">
+                <div class="action-number">8</div>
+                <div class="action-content">
+                    <h4>"사이버 범죄 예방 가이드"</h4>
+                    <p>보이스피싱, 몸캠피싱, 사이버 스토킹 대응법 — 실용성 극대화</p>
+                </div>
+            </div>
+            <div class="action-step">
+                <div class="action-number">9</div>
+                <div class="action-content">
+                    <h4>"변호사비용 솔직 토크"</h4>
+                    <p>형사 사건 비용 구조 투명 공개 — 진입장벽 제거 + 신뢰</p>
+                </div>
+            </div>
+            <div class="action-step">
+                <div class="action-number">10</div>
+                <div class="action-content">
+                    <h4>월간 라이브 무료 법률 상담</h4>
+                    <p>인스타/유튜브 라이브 — 리드 제너레이션 + 커뮤니티 강화</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 8. CUSTOMER FUNNEL -->
+<section class="section" id="funnel" style="background: rgba(233, 69, 96, 0.03);">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">08 — Customer Funnel</div>
+            <h2 class="section-title">고객 전환 퍼널</h2>
+            <p class="section-subtitle">인지 → 관심 → 상담 → 수임까지의 전환 경로 설계</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="funnel fade-in">
+            <div class="funnel-step" style="width: 90%; background: rgba(233, 69, 96, 0.15); border: 1px solid rgba(233, 69, 96, 0.3);">
+                <strong>인지 (Awareness)</strong><br>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">SNS 바이럴 · 네이버 검색 · 유튜브 · 지인 추천 · 언론 노출</span>
+            </div>
+            <div class="funnel-arrow">▼</div>
+            <div class="funnel-step" style="width: 75%; background: rgba(245, 197, 24, 0.15); border: 1px solid rgba(245, 197, 24, 0.3);">
+                <strong>관심 (Interest)</strong><br>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">프로필 방문 · 팔로우 · 콘텐츠 소비 · 블로그 구독</span>
+            </div>
+            <div class="funnel-arrow">▼</div>
+            <div class="funnel-step" style="width: 60%; background: rgba(100, 181, 246, 0.15); border: 1px solid rgba(100, 181, 246, 0.3);">
+                <strong>고려 (Consideration)</strong><br>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">DM 문의 · 후기 확인 · 경쟁 변호사 비교 · 상담비용 확인</span>
+            </div>
+            <div class="funnel-arrow">▼</div>
+            <div class="funnel-step" style="width: 45%; background: rgba(76, 175, 80, 0.15); border: 1px solid rgba(76, 175, 80, 0.3);">
+                <strong>상담 (Consultation)</strong><br>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">전화 상담 (4.5만원/15분) · 방문 상담 (11만원/30분) · 긴급 상담</span>
+            </div>
+            <div class="funnel-arrow">▼</div>
+            <div class="funnel-step" style="width: 30%; background: linear-gradient(135deg, rgba(245, 197, 24, 0.2), rgba(233, 69, 96, 0.2)); border: 1px solid rgba(245, 197, 24, 0.4);">
+                <strong style="font-size: 1.1rem;">수임 (Retention)</strong><br>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">사건 수임 · 추가 사건 · 지인 추천 · 후기 작성</span>
+            </div>
+        </div>
+
+        <div class="highlight-box fade-in">
+            <strong>퍼널 최적화 핵심:</strong><br>
+            1. <strong>인지 → 관심:</strong> 콘텐츠 다각화로 유입 채널 5배 확장 (현재 2개 → 10개)<br>
+            2. <strong>관심 → 고려:</strong> 후기/성과 콘텐츠 비중 확대, 상담 CTA 최적화<br>
+            3. <strong>고려 → 상담:</strong> 상담 예약 프로세스 간소화, 카카오톡 채널 개설<br>
+            4. <strong>상담 → 수임:</strong> 상담 시 체계적 사건 분석 자료 제공, 후기 요청 자동화
+        </div>
+    </div>
+</section>
+
+<!-- 9. EXECUTION ROADMAP -->
+<section class="section" id="timeline">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">09 — Execution Roadmap</div>
+            <h2 class="section-title">실행 로드맵</h2>
+            <p class="section-subtitle">6개월 단계별 실행 계획</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="timeline fade-in">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-phase">Phase 1 — 2026년 4월</div>
+                <div class="timeline-title">기반 구축 (Foundation)</div>
+                <div class="timeline-desc">
+                    <ul class="styled-list">
+                        <li>네이버 블로그 개설 + 첫 10개 게시물 작성 (SEO 키워드 리서치 포함)</li>
+                        <li>인스타그램 프로필 최적화 + 하이라이트 구성 (상담안내/전문분야/후기/일상)</li>
+                        <li>카카오톡 채널 개설 (상담 문의 접수용)</li>
+                        <li>콘텐츠 캘린더 수립 + 2주치 콘텐츠 사전 제작</li>
+                        <li>촬영 장비 셋팅 (스마트폰 + 링라이트 + 마이크)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-phase">Phase 2 — 2026년 5월</div>
+                <div class="timeline-title">콘텐츠 가동 (Content Launch)</div>
+                <div class="timeline-desc">
+                    <ul class="styled-list">
+                        <li>유튜브 채널 개설 + 숏츠 주 2회 업로드 시작</li>
+                        <li>인스타 릴스/카드뉴스 정기 업로드 시작 (주 3회)</li>
+                        <li>네이버 블로그 주 3회 포스팅 루틴 정착</li>
+                        <li>첫 인스타 라이브 Q&A 진행</li>
+                        <li>기존 후기/성과 정리 + 콘텐츠화</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-phase">Phase 3 — 2026년 6~7월</div>
+                <div class="timeline-title">확장 (Growth)</div>
+                <div class="timeline-desc">
+                    <ul class="styled-list">
+                        <li>유튜브 롱폼 콘텐츠 시작 (월 2회) — "꽃변의 사건파일"</li>
+                        <li>틱톡 크로스포스팅 시작</li>
+                        <li>개인 웹사이트 제작 및 런칭</li>
+                        <li>네이버 지식인 전문가 답변 활동 (주 5건)</li>
+                        <li>헬스/피트니스 인플루언서 콜라보 1건</li>
+                        <li>법률 매체 기고 시작</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-phase">Phase 4 — 2026년 8~9월</div>
+                <div class="timeline-title">최적화 & 스케일업 (Optimize)</div>
+                <div class="timeline-desc">
+                    <ul class="styled-list">
+                        <li>채널별 성과 분석 → 저효율 채널 축소, 고효율 채널 집중</li>
+                        <li>네이버 검색광고 테스트 (소액: 월 50만원)</li>
+                        <li>인스타 광고 테스트 (리타겟팅 위주)</li>
+                        <li>구글 마이비즈니스 최적화 + 리뷰 수집</li>
+                        <li>강연/세미나 출강 1건 이상</li>
+                        <li>상담 → 수임 전환율 데이터 분석 및 개선</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 10. BUDGET -->
+<section class="section" id="budget" style="background: rgba(233, 69, 96, 0.03);">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">10 — Budget Plan</div>
+            <h2 class="section-title">예산 계획</h2>
+            <p class="section-subtitle">월간 마케팅 예산 (6개월 기준)</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="grid-2 fade-in">
+            <div class="card">
+                <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem;">Phase 1~2 월간 예산 (4~5월)</h3>
+                <div class="budget-item">
+                    <div class="budget-category">
+                        <div class="budget-dot" style="background: var(--accent);"></div>
+                        <span>콘텐츠 제작 (디자인/편집 외주)</span>
+                    </div>
+                    <div class="budget-amount">80만원</div>
+                </div>
+                <div class="budget-item">
+                    <div class="budget-category">
+                        <div class="budget-dot" style="background: var(--gold);"></div>
+                        <span>촬영 장비 (초기 투자)</span>
+                    </div>
+                    <div class="budget-amount">30만원</div>
+                </div>
+                <div class="budget-item">
+                    <div class="budget-category">
+                        <div class="budget-dot" style="background: #64b5f6;"></div>
+                        <span>카카오톡 채널 / 툴 구독</span>
+                    </div>
+                    <div class="budget-amount">5만원</div>
+                </div>
+                <div class="budget-item">
+                    <div class="budget-category">
+                        <div class="budget-dot" style="background: #81c784;"></div>
+                        <span>기타 (교통비, 소품 등)</span>
+                    </div>
+                    <div class="budget-amount">15만원</div>
+                </div>
+                <div class="total-row">
+                    <span>Phase 1~2 월간 합계</span>
+                    <span style="color: var(--accent-light);">약 130만원/월</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem;">Phase 3~4 월간 예산 (6~9월)</h3>
+                <div class="budget-item">
+                    <div class="budget-category">
+                        <div class="budget-dot" style="background: var(--accent);"></div>
+                        <span>콘텐츠 제작 (영상편집 포함)</span>
+                    </div>
+                    <div class="budget-amount">150만원</div>
+                </div>
+                <div class="budget-item">
+                    <div class="budget-category">
+                        <div class="budget-dot" style="background: var(--gold);"></div>
+                        <span>유료 광고 (네이버 + 인스타)</span>
+                    </div>
+                    <div class="budget-amount">100만원</div>
+                </div>
+                <div class="budget-item">
+                    <div class="budget-category">
+                        <div class="budget-dot" style="background: #64b5f6;"></div>
+                        <span>웹사이트 제작/유지</span>
+                    </div>
+                    <div class="budget-amount">50만원</div>
+                </div>
+                <div class="budget-item">
+                    <div class="budget-category">
+                        <div class="budget-dot" style="background: #81c784;"></div>
+                        <span>기타 (콜라보, 이벤트 등)</span>
+                    </div>
+                    <div class="budget-amount">30만원</div>
+                </div>
+                <div class="total-row">
+                    <span>Phase 3~4 월간 합계</span>
+                    <span style="color: var(--accent-light);">약 330만원/월</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card fade-in" style="margin-top: 1.5rem;">
+            <h3 style="font-size: 1.1rem; margin-bottom: 1.5rem;">6개월 총 예산 및 ROI 전망</h3>
+            <div class="grid-3">
+                <div class="roi-box">
+                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">6개월 총 투자</div>
+                    <div class="roi-value">1,580만원</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem;">(130만x2 + 330만x4)</div>
+                </div>
+                <div class="roi-box">
+                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">목표 추가 수임</div>
+                    <div class="roi-value">월 +3건</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem;">마케팅 통한 신규 유입</div>
+                </div>
+                <div class="roi-box">
+                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">예상 ROI</div>
+                    <div class="roi-value">300~500%</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem;">형사 수임료 건당 300~1,000만원 기준</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 11. KPI -->
+<section class="section" id="kpi">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">11 — KPI Dashboard</div>
+            <h2 class="section-title">핵심 성과 지표</h2>
+            <p class="section-subtitle">6개월 후 달성 목표</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="grid-4 fade-in">
+            <div class="kpi-card">
+                <div class="kpi-title">Threads 팔로워</div>
+                <div class="kpi-current" style="color: var(--accent-light);">9.8K</div>
+                <div class="kpi-target">목표: <span>30,000</span></div>
+                <div class="progress-bar" style="margin-top: 0.8rem;">
+                    <div class="progress-fill" style="width: 33%; background: var(--gradient-2);"></div>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-title">Instagram 팔로워</div>
+                <div class="kpi-current" style="color: var(--accent-light);">4.0K</div>
+                <div class="kpi-target">목표: <span>15,000</span></div>
+                <div class="progress-bar" style="margin-top: 0.8rem;">
+                    <div class="progress-fill" style="width: 27%; background: var(--gradient-1);"></div>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-title">유튜브 구독자</div>
+                <div class="kpi-current" style="color: var(--accent-light);">0</div>
+                <div class="kpi-target">목표: <span>5,000</span></div>
+                <div class="progress-bar" style="margin-top: 0.8rem;">
+                    <div class="progress-fill" style="width: 0%; background: var(--gradient-3);"></div>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-title">네이버 블로그 일 방문</div>
+                <div class="kpi-current" style="color: var(--accent-light);">0</div>
+                <div class="kpi-target">목표: <span>500/일</span></div>
+                <div class="progress-bar" style="margin-top: 0.8rem;">
+                    <div class="progress-fill" style="width: 0%; background: linear-gradient(135deg, #81c784, #0f3460);"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-3 fade-in" style="margin-top: 1.5rem;">
+            <div class="kpi-card">
+                <div class="kpi-title">월 평균 상담 문의</div>
+                <div class="kpi-current" style="color: var(--gold);">현재 미측정</div>
+                <div class="kpi-target">목표: <span>월 50건 이상</span></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-title">상담 → 수임 전환율</div>
+                <div class="kpi-current" style="color: var(--gold);">현재 미측정</div>
+                <div class="kpi-target">목표: <span>30% 이상</span></div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-title">마케팅 기인 월 수임</div>
+                <div class="kpi-current" style="color: var(--gold);">현재 미측정</div>
+                <div class="kpi-target">목표: <span>월 +3건</span></div>
+            </div>
+        </div>
+
+        <div class="card fade-in" style="margin-top: 2rem;">
+            <div class="card-header">
+                <div class="card-icon" style="background: rgba(245, 197, 24, 0.15);">📈</div>
+                <div>
+                    <div class="card-title">측정 & 리포팅</div>
+                    <div class="card-subtitle">데이터 기반 의사결정 체계</div>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div>
+                    <h4 style="font-size: 0.95rem; color: var(--accent-light); margin-bottom: 0.8rem;">주간 모니터링</h4>
+                    <ul class="styled-list">
+                        <li>채널별 팔로워 증감</li>
+                        <li>게시물별 참여율 (좋아요/댓글/공유)</li>
+                        <li>상담 문의 건수 및 유입 경로</li>
+                        <li>콘텐츠 캘린더 이행률</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-size: 0.95rem; color: var(--accent-light); margin-bottom: 0.8rem;">월간 리포팅</h4>
+                    <ul class="styled-list">
+                        <li>채널별 ROI 분석</li>
+                        <li>최고/최저 성과 콘텐츠 분석</li>
+                        <li>수임 전환 퍼널 분석</li>
+                        <li>다음 달 전략 조정 사항</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXECUTIVE SUMMARY -->
+<section class="section" style="background: linear-gradient(135deg, rgba(233, 69, 96, 0.08), rgba(15, 52, 96, 0.15));">
+    <div class="container">
+        <div class="section-header fade-in">
+            <div class="section-number">Executive Summary</div>
+            <h2 class="section-title">핵심 요약 & 즉시 실행 항목</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="card fade-in" style="border: 1px solid rgba(245, 197, 24, 0.3);">
+            <h3 style="color: var(--gold); margin-bottom: 1.5rem;">이번 주 당장 실행할 5가지</h3>
+
+            <div class="action-step" style="border-color: rgba(245, 197, 24, 0.3);">
+                <div class="action-number" style="background: var(--gradient-2);">1</div>
+                <div class="action-content">
+                    <h4>네이버 블로그 개설</h4>
+                    <p>"김영지 변호사의 꽃변 법률노트" — 첫 게시물: "성범죄 피해자가 가장 먼저 해야 할 3가지" 작성</p>
+                </div>
+            </div>
+            <div class="action-step" style="border-color: rgba(245, 197, 24, 0.3);">
+                <div class="action-number" style="background: var(--gradient-2);">2</div>
+                <div class="action-content">
+                    <h4>인스타그램 프로필 & 하이라이트 정비</h4>
+                    <p>바이오 최적화, CTA 링크 (카카오톡/전화), 하이라이트 4개 구성 (전문분야/상담안내/후기/일상)</p>
+                </div>
+            </div>
+            <div class="action-step" style="border-color: rgba(245, 197, 24, 0.3);">
+                <div class="action-number" style="background: var(--gradient-2);">3</div>
+                <div class="action-content">
+                    <h4>카카오톡 채널 개설</h4>
+                    <p>"김영지 변호사" 카카오톡 채널 — 자동응답 메시지 설정 (상담 안내/비용/위치)</p>
+                </div>
+            </div>
+            <div class="action-step" style="border-color: rgba(245, 197, 24, 0.3);">
+                <div class="action-number" style="background: var(--gradient-2);">4</div>
+                <div class="action-content">
+                    <h4>첫 릴스/숏츠 촬영</h4>
+                    <p>"경찰 조사 받을 때 이것만 기억하세요" 60초 영상 — 스마트폰으로 촬영 가능</p>
+                </div>
+            </div>
+            <div class="action-step" style="border-color: rgba(245, 197, 24, 0.3);">
+                <div class="action-number" style="background: var(--gradient-2);">5</div>
+                <div class="action-content">
+                    <h4>상담 유입 경로 추적 시작</h4>
+                    <p>"어디서 보고 연락하셨나요?" — 모든 상담에 유입 경로 질문 추가 (데이터 수집 시작)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p style="margin-bottom: 0.5rem;">김영지 변호사 마케팅 전략 기획서 · 2026년 3월 28일</p>
+        <p style="color: var(--text-muted); font-size: 0.8rem;">본 기획서는 @your_lawyer_yj 소셜미디어 분석 및 공개 정보 기반으로 작성되었습니다.</p>
+        <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.5rem;">Confidential · For Internal Use Only</p>
+    </div>
+</footer>
+
+<script>
+    // Scroll animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Active nav link
+    const sections = document.querySelectorAll('.section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
